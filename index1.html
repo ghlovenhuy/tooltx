@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>tool tx</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 320px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background: #0d6efd;
+            color: #fff;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .tai { color: #00ff99; }
+        .xiu { color: #ff4d4d; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>tool tài xỉu md5</h2>
+    <input type="text" id="md5" placeholder="Nhập chuỗi MD5">
+    <button onclick="check()">XEM KẾT QUẢ</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function check() {
+    const md5 = document.getElementById("md5").value.trim().toLowerCase();
+    if (md5.length === 0) {
+        alert("Vui lòng nhập MD5");
+        return;
+    }
+
+    const lastChar = md5[md5.length - 1];
+    const value = parseInt(lastChar, 16);
+
+    const resultDiv = document.getElementById("result");
+
+    if (value >= 8) {
+        resultDiv.textContent = "TÀI";
+        resultDiv.className = "result tai";
+    } else {
+        resultDiv.textContent = "XỈU";
+        resultDiv.className = "result xiu";
+    }
+}
+</script>
+
+</body>
+</html>
